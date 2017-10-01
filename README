@@ -1,0 +1,11 @@
+The master.c will create shared memory and fork the children
+while carefully doing that to make sure too many are not made.
+
+The exec is called for each child where the child will go into
+the slave.c code. In that file the child process will look at shared
+memory, some variable in it as well as the Peterson or Bakery algo
+to make sure it is alone in the critical section. Then the process
+will take the right string from the array, check if its a palindrome
+and write the string to one of the files. Then it will leave the 
+critical section and the next process will do the same. This continues
+until every string has been written to a file.

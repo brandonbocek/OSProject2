@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+
+/*  reads from a file and stores values in an array */
+enum { MAXLINES = 30 };
+
+int main(void)
+{
+    int i = 0;
+    char lines[MAXLINES][BUFSIZ];
+    FILE *fp = fopen("me.txt", "r");
+
+    if (fp == 0)
+    {
+        fprintf(stderr, "failed to open input.txt\n");
+        exit(1);
+    }
+    while (i < MAXLINES && fgets(lines[i], sizeof(lines[0]), fp))
+    {
+        lines[i][strlen(lines[i])-1] = '\0';
+        i = i + 1;
+    }
+    fclose(fp);
+    int a=0;
+    for(a=0; a<3; a++)
+	printf("%s\n", lines[a]);
+ 
+    return 0;
+}
