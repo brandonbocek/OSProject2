@@ -1,11 +1,22 @@
-The master.c will create shared memory and fork the children
-while carefully doing that to make sure too many are not made.
+What to do
 
-The exec is called for each child where the child will go into
-the slave.c code. In that file the child process will look at shared
-memory, some variable in it as well as the Peterson or Bakery algo
-to make sure it is alone in the critical section. Then the process
-will take the right string from the array, check if its a palindrome
-and write the string to one of the files. Then it will leave the 
-critical section and the next process will do the same. This continues
-until every string has been written to a file.
+1. type either "make" or "make all"
+	This will compile the executables
+	master for the master process
+	and palin for all of the slaves
+	when execl is called in master
+2. type ./master
+	This will read words from a text
+	file called palin.in and all 
+	palindromes will be written to
+	palin.out while non-palindromes
+	will be written to nopalin.out
+3. Or type ./master -h
+	You will be presented with
+	command line arguments to change
+	what file you want to read words
+	from and/or changing the max_writes
+	for the slave's for loop just outside
+	the multiple process algorithm. You
+	ca also change the termination time.
+ 
